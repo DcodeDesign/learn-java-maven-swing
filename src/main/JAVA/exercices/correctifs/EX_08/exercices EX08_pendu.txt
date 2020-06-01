@@ -1,0 +1,42 @@
+Consignes pour les exercices EX08_pendu :
+
+Ex08_01_lettres:
+  Afficher 26 boutons avec les lettres de l'alphabet.
+  Le texte affiché doit être en "Courier" 28 gras
+
+Ex08_01_lettres:
+  Créez 2 panels avec une bordure et placez ces panels dans le panel conteneur.
+  Dans panel 1 : zone de texte non éditable, en Courier 28 gras
+  Dans panel 2 : les 26 boutons de l'exercice 1
+  Chaque clic sur un bouton ajoute la lettre dans la zone de texte
+
+Ex08_03_mot:
+  zone de texte éditable, en Courier 28 gras qui ne doit accepter que des lettres majuscules (A..Z)
+
+Ex08_04_mot:
+  idem ex03 + un bouton "Start"
+  Clic sur start =>
+    désactivation du bouton "Start"
+    la zone de texte n'est plus éditable
+    remplacement dans la zone de texte de chaque caractère par un point (ou tiret...)
+
+Ex08_05_pendu:
+  2 panels avec une bordure dans le panel conteneur.
+  Dans panel 1 : zone de texte éditable + bouton start
+  Dans panel 2 : les 26 boutons de l'exercice 1 désactivés
+  Clic sur start =>
+    idem ex04 + activation des 26 boutons du panel 2
+
+Ex08_06_pendu:
+  idem ex05 + clic sur un bouton lettre =>
+    affichage de la lettre dans la zone de texte à la bonne place
+      (ou aux bonnes places si lettre existe plusieurs fois dans le mot)
+      en remplacement de l'underscore
+    désactivation du bouton cliqué
+
+    Attention: un évènement keyPressed sur un bouton désactivé est toujours possible
+      vérifier avec isEnabled() ou utilisez ActionListener
+
+Ex08_07_pendu:
+  idem ex06 + lorsque toutes les lettres du mot sont trouvées =>
+    désactivations de tous les boutons "lettre"

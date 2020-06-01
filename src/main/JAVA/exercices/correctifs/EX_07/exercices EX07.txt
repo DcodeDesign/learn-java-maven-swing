@@ -1,0 +1,24 @@
+Consignes pour les exercices EX07_fen** :
+
+Utilisation simple du GridBagLayout Manager
+
+Ex07_fen01:
+  Afficher 9 boutons numérotés de 1 à 9 dans une grille 3 * 3
+Ex07_fen01b:
+  Idem, mais en utilisant une boucle et une constante TAILLE qui donne la taille de la grille (3 => 3*3...)
+
+Ex07_fen02:
+  Idem, mais en affichant uniquement les nombres impairs
+
+Ex07_fen03:
+  Affichez 100 boutons dans une grille 10 * 10.
+  Lorsqu'on clique sur le bouton, il est désactivé.
+
+Ex07_fen04:
+  Affichez 100 boutons dans une grille 10 * 10.
+  Lorsqu'on survole un bouton, sa couleur et la couleur de tous ses multiples change.
+
+Ex07_fen05:
+  Affichez 100 boutons dans une grille 10 * 10.
+  Lorsqu'on survole un bouton, sa couleur et la couleur de tous ses multiples change.
+  Lorsqu'on clique sur le bouton, il est désactivé, ainsi que tous ses multiples.

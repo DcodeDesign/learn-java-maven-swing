@@ -1,0 +1,47 @@
+Consignes pour les exercices EX06_fen** :
+
+Gestion des évènements clavier avec KeyListener.
+Par facilité, utilisez un FlowLayout, mais ce n'est pas une obligation.
+
+Ex06_fen01:
+  Indique si une touche UniCode (un caractère) est enfoncée (keyTyped)
+  Indique si une touche (caractère ou shift, ctrl...) est enfoncée (keyPressed)
+  Indique si une touche est relâchée (keyReleased)
+
+Ex06_fen02:
+  Affiche le code (getKeyCode) ou le caractère (getKeyChar) de la touche enfoncée (keyPressed)
+
+Ex06_fen03:
+  Affiche le contenu de la zone de texte
+    lorqu'on enfonce la touche
+    lorsqu'on relâche la touche
+    lorsqu'un caractère est tapé
+
+Ex06_fen04:
+  La zone de texte n'accepte que les majuscules (isUpperCase)
+  et refuse les autres en stoppant l'évènement (consume)
+  (keyTyped)
+
+Ex06_fen05:
+  La 1ère zone de texte n'accepte que les majuscules (isUpperCase)
+  La 2ème zone de texte n'accepte que les chiffres
+
+Ex06_fen06:
+  La zone de texte n'accepte que les consonnes
+  (personnellement, j'utilise indexOf)
+
+Ex06_fen07:
+  Les flèches de direction affichent :
+    je tourne à droite
+    je tourne à gauche
+    j'accélère
+    je freine
+  et ajoute la lettre D G A ou F dans la zone de texte.
+  Les codes spéciaux se touvent dans KeyEvent (VK_RIGHT...)
+
+Remarques:
+  keyTyped représente le caractère (getKeyChar): Shift + a => "A"
+                      keyCode vaut 0
+  keyPressed prend en compte toutes les touches (Shift, Ctrl...)
+           et dispose d'un code pour chaque (getKeyCode)
+           mais pas nécessairement de caractère (getKeyChar)
