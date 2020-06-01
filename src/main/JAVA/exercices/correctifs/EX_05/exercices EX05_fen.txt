@@ -1,4 +1,4 @@
-Consignes pour les exercices EX05_fen** :
+## Consignes pour les exercices EX05_fen** :
 
 Gestion des évènements souris avec MouseListener.
 Par facilité, utilisez un FlowLayout, mais ce n'est pas une obligation.
