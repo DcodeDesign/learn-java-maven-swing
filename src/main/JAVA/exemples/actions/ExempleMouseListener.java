@@ -1,21 +1,21 @@
-package exercices.EX_05;
+package exemples.actions;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
-/*Ex05_fen05:
+/*Ex05_fen06:
   Le texte du bouton indique si l'on clique avec quel bouton de la souris on clique.
   Il revient à son texte d'origine lorsqu'on relâche le bouton.*/
-public class Ex05_fen05 extends JFrame implements java.awt.event.MouseListener {
+public class ExempleMouseListener extends JFrame implements java.awt.event.MouseListener {
 
-    private JFrame jFrame = new JFrame("Ex05_fen02");
+    private JFrame jFrame = new JFrame("Ex06_fen02");
     private JPanel jpanel = new JPanel();
     private Color jpanelColor = jpanel.getBackground();
     private JButton button01 = new JButton("btn   01");
     private JTextField textFeild = new JTextField("...");
 
-    public Ex05_fen05() {
+    public ExempleMouseListener() {
 
         jFrame.setSize(300,100);
         setBounds(100, 400, 300, 100);
@@ -34,57 +34,32 @@ public class Ex05_fen05 extends JFrame implements java.awt.event.MouseListener {
     }
 
     public static void main(String[] args) {
-        JFrame jframe = new Ex05_fen05();
+        JFrame jframe = new ExempleMouseListener();
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        JButton btn = (JButton) e.getSource();
-        btn.setText("mouseClicked");
-        btn.setBackground(jpanelColor);
+
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        JButton btn = (JButton) e.getSource();
 
-        int btnNum = e.getButton();
-
-        switch (btnNum){
-            case 2:
-                textFeild.setText("Click center");
-                break;
-            case 3:
-                textFeild.setText("Click droite");
-                break;
-            default:
-                textFeild.setText("Click gauche");
-                break;
-        }
-
-        btn.setText("mousePressed");
-        btn.setBackground(jpanelColor);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        JButton btn = (JButton) e.getSource();
-        btn.setText("mouseReleased");
-        btn.setBackground(jpanelColor);
+
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        JButton btn = (JButton) e.getSource();
-        btn.setText("mouseEntered");
-        btn.setBackground(Color.RED);
+
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        JButton btn = (JButton) e.getSource();
-        btn.setText("mouseExited");
-        btn.setBackground(jpanelColor);
+
     }
 }
 

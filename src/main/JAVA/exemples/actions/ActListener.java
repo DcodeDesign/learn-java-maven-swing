@@ -1,6 +1,6 @@
 package exemples.actions;
 
-import exercices.EX_05.Ex05_fen01;
+import exercices.work.EX_05.Ex05_fen01;
 
 import javax.swing.*;
 import java.awt.*;

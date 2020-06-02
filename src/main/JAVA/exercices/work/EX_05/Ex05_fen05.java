@@ -1,20 +1,21 @@
-package exercices.EX_05;
+package exercices.work.EX_05;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
-/*Ex05_fen04:
-  Idem Ex05_fen03, mais avec 2 boutons.*/
-public class Ex05_fen04 extends JFrame implements java.awt.event.MouseListener {
+/*Ex05_fen05:
+  Le texte du bouton indique si l'on clique avec quel bouton de la souris on clique.
+  Il revient à son texte d'origine lorsqu'on relâche le bouton.*/
+public class Ex05_fen05 extends JFrame implements java.awt.event.MouseListener {
 
-    private JFrame jFrame = new JFrame("Ex05_fen02");
+    private JFrame jFrame = new JFrame(getClass().getName());
     private JPanel jpanel = new JPanel();
     private Color jpanelColor = jpanel.getBackground();
     private JButton button01 = new JButton("btn   01");
-    private JButton button02 = new JButton("btn   02");
+    private JTextField textFeild = new JTextField("...");
 
-    public Ex05_fen04() {
+    public Ex05_fen05() {
 
         jFrame.setSize(300,100);
         setBounds(100, 400, 300, 100);
@@ -24,24 +25,16 @@ public class Ex05_fen04 extends JFrame implements java.awt.event.MouseListener {
         button01.setBackground(Color.RED);
         button01.setForeground(Color.BLACK);
         button01.setOpaque(true);
-        /*button01.setBorderPainted(false);
-        button01.setFocusPainted(false);*/
         button01.addMouseListener(this);
 
-        jpanel.add(button02);
-        button02.setBackground(Color.RED);
-        button02.setForeground(Color.BLACK);
-        button02.setOpaque(true);
-        /*button02.setBorderPainted(false);
-        button02.setFocusPainted(false);*/
-        button02.addMouseListener(this);
+        jpanel.add(textFeild);
 
         jFrame.getContentPane().add(jpanel);
         jFrame.setVisible(true);
     }
 
     public static void main(String[] args) {
-        JFrame jframe = new Ex05_fen04();
+        JFrame jframe = new Ex05_fen05();
     }
 
     @Override
@@ -54,6 +47,21 @@ public class Ex05_fen04 extends JFrame implements java.awt.event.MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         JButton btn = (JButton) e.getSource();
+
+        int btnNum = e.getButton();
+
+        switch (btnNum){
+            case 2:
+                textFeild.setText("Click center");
+                break;
+            case 3:
+                textFeild.setText("Click droite");
+                break;
+            default:
+                textFeild.setText("Click gauche");
+                break;
+        }
+
         btn.setText("mousePressed");
         btn.setBackground(jpanelColor);
     }
@@ -79,3 +87,4 @@ public class Ex05_fen04 extends JFrame implements java.awt.event.MouseListener {
         btn.setBackground(jpanelColor);
     }
 }
+

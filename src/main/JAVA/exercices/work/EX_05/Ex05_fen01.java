@@ -1,4 +1,4 @@
-package exercices.EX_05;
+package exercices.work.EX_05;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
   Le bouton change de couleur chaque fois que l'on clique dessus.
   Vert -> Rouge -> Vert -> Rouge -> ... */
 public class Ex05_fen01 extends JFrame implements ActionListener {
-    JFrame jFrame = new JFrame("Ex05_fen01");
+    JFrame jFrame = new JFrame(getClass().getName());
     JPanel jpanel = new JPanel();
     private JButton button = new JButton("Color");
     private boolean flag = false;

@@ -1,4 +1,4 @@
-package exercices.EX_05;
+package exercices.work.EX_05;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
     La couleur du fond passe en Vert tant que l'on maintient le bouton enfoncé.
     La couleur revient à la couleur de base lorsqu'on relâche le bouton.*/
 public class Ex05_fen02 extends JFrame implements java.awt.event.MouseListener {
-    private JFrame jFrame = new JFrame("Ex05_fen02");
+    private JFrame jFrame = new JFrame(getClass().getName());
     private JPanel jpanel = new JPanel();
     private JButton button = new JButton("Color");
 
