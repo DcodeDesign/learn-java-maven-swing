@@ -29,7 +29,7 @@ public class ActListener extends JFrame implements java.awt.event.ActionListener
                 button.setText("OH !");
             }
         });*/
-        button.addActionListener(this::actionPerformed);
+        button.addActionListener(this);
 
 
         jFrame.getContentPane().add(jpanel);
