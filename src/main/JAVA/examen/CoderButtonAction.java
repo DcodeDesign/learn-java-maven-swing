@@ -7,47 +7,56 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class CoderButtonAction {
-    private int t_nbr = 0;
-    private JButton b;
-    private ArrayList<ArrayList<String>> biDemArrList = new ArrayList();
-    ArrayList<String> characters_t_list = new ArrayList();
+    private int fieldLengthChar = 0;
+
+    //characters_t_list :
+    // liste de tableau contenant uniquement les lettres insérées dans le champs
+    private ArrayList<String> characters_t_list = new ArrayList();
+
+    // t_list :
+    // liste de tableau contenant tous les caractères insérés dans le champs
     private ArrayList<String> t_list = new ArrayList();
+
+    // second_t_list :
+    // liste de tableau de contenant la position des lettre, les espaces, les caractères spéciaux
     private ArrayList<String> second_t_list = new ArrayList();
+
+    // second_t_list :
+    // liste de tableau bidimentionnel regroupant t_list & second_t_list
+    private ArrayList<ArrayList<String>>  bidimensionalArrayList = new ArrayList();
+
     private Font button_font = new Font("SansSerif", Font.BOLD, 12);
     private JButton[] button_generate;
-    private String s = "";
     private String regexLetter = "[A-Z]";
     private String regexSpecial = "[A-Za-z0-9- ]";
     private String regexSpace = "[ ]";
 
-    public CoderButtonAction(ActionEvent e, JTextField t, JPanel p, JPanel p2, JFrame f, JButton button_reset) {
-        b = ((JButton) e.getSource());
-        coder_action(e, t, p, p2, f, button_reset);
+    public CoderButtonAction(ActionEvent e, JTextField field, JPanel buttonGeneratePanel, JFrame window, JButton button_reset) {
+        coder_action(e, field, buttonGeneratePanel, window, button_reset);
     }
 
-    private void coder_action(ActionEvent e, JTextField t, JPanel p, JPanel p2, JFrame f, JButton button_reset) {
-        f.setSize(500, 410);
-        f.setLocationRelativeTo(null);
+    private void coder_action(ActionEvent e, JTextField t, JPanel buttonGeneratePanel, JFrame  window, JButton button_reset) {
+        window.setSize(500, 410);
+        window.setLocationRelativeTo(null);
 
-        this.b.setText("Coder");
         t.setEditable(false);
 
         ArrayList<ArrayList<String>> correlation_table = new ArrayList(matchArrayGenerator(t));
         // System.out.println(test);
 
-        button_generate = new JButton[t_nbr];
+        // génération des boutons
+        button_generate = new JButton[fieldLengthChar];
         for (int i = 0; i < correlation_table.get(0).size(); i++) {
+
             // Generation des boutons Lettre
             if(correlation_table.get(0).get(i).matches(regexLetter)){
                 button_generate[i] = new JButton(correlation_table.get(1).get(i));
                 button_generate[i].setPreferredSize(new Dimension(45, 45));
                 button_generate[i].setFont(button_font);
                 button_generate[i].setForeground(new Color(85, 85, 85));
-                p2.add(button_generate[i]);
+                buttonGeneratePanel.add(button_generate[i]);
                 int finalI = i;
 
                 button_generate[i].addMouseListener(new java.awt.event.MouseAdapter() {
@@ -78,39 +87,41 @@ public class CoderButtonAction {
                 button_generate[i] = new JButton(correlation_table.get(0).get(i));
                 button_generate[i].setPreferredSize(new Dimension(45, 45));
                 button_generate[i].setEnabled(false);
-                p2.add(button_generate[i]);
+                buttonGeneratePanel.add(button_generate[i]);
             }
 
             // Generation des boutons espace
             if(correlation_table.get(0).get(i).matches(regexSpace)){
                 button_generate[i] = new JButton(correlation_table.get(0).get(i));
                 button_generate[i].setPreferredSize(new Dimension(60, 28));
-                p2.add(button_generate[i]);
+                buttonGeneratePanel.add(button_generate[i]);
             }
         }
 
-        this.b.setVisible(false);
+        // switch bouton
+        JButton button_coder = ((JButton) e.getSource());
+        button_coder.setVisible(false);
         button_reset.setVisible(true);
     }
 
-    private ArrayList<ArrayList<String>> matchArrayGenerator(JTextField t) {
+    private ArrayList<ArrayList<String>> matchArrayGenerator(JTextField field) {
 
         // Récupération du text inséré dans la champs
-        String t_text = t.getText();
+        String t_text = field.getText();
 
         // Comptage du nombre de lettre du champs récupéré
-        t_nbr = t_text.length();
+        fieldLengthChar = t_text.length();
 
         // Insertion de chaque caractère dans deux arraylist
-        for (int i = 0; i <= t_nbr - 1; i++) {
+        for (int i = 0; i <= fieldLengthChar - 1; i++) {
             t_list.add(t_text.substring(i, i + 1));
             second_t_list.add(t_text.substring(i, i + 1));
         }
 
         // Insertion uniquement des lettres dans une nouvelle arraylist
-        for (int i = 0; i < t_nbr; i++) {
-            s = String.valueOf(t_list.get(i));
-            if (s.matches(regexLetter)) {
+        for (int i = 0; i < fieldLengthChar; i++) {
+            String letter = String.valueOf(t_list.get(i));
+            if (letter.matches(regexLetter)) {
                 //characters_t_list.add(t_list.get(i));
                 characters_t_list.add(t_list.get(i).toUpperCase());
             }
@@ -123,18 +134,20 @@ public class CoderButtonAction {
         clean_temp_t_list.clear();
         clean_temp_t_list.addAll(set);
 
-        // Comparaison second_t_list
+        // Comparaison second_t_list avec characters_t_list
+        // pour y inserer la position des lettres
         for (int i = 0; i < second_t_list.size(); i++) {
             boolean flag = true;
             int l = 0;
             for (l = 0; l < clean_temp_t_list.size() && flag; l++) {
-                s = String.valueOf(t_list.get(i));
+
                 if(second_t_list.get(i).equals(clean_temp_t_list.get(l))) {
                     second_t_list.set(i, String.valueOf(clean_temp_t_list.indexOf(clean_temp_t_list.get(l)) + 1));
                     flag = false;
                 }
 
-                if(!s.matches(regexSpecial)) {
+                String letter = String.valueOf(t_list.get(i));
+                if(!letter.matches(regexSpecial)) {
                     second_t_list.set(i , "Special");
                     flag = false;
                 }
@@ -146,10 +159,10 @@ public class CoderButtonAction {
             }
         }
 
-        biDemArrList.add(t_list);
-        biDemArrList.add(second_t_list);
+        bidimensionalArrayList.add(t_list);
+        bidimensionalArrayList.add(second_t_list);
 
-        return biDemArrList;
+        return  bidimensionalArrayList;
     }
 }
 

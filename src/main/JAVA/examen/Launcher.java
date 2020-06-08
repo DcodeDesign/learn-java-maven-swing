@@ -10,7 +10,7 @@ public class Launcher extends JFrame  {
     private JPanel buttonGeneratePanel = new JPanel();
 
     public Launcher() {
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        window.setDefaultCloseOperation(EXIT_ON_CLOSE);
         window.setSize(500, 111);
         window.setBackground(Color.WHITE);
 

@@ -28,8 +28,6 @@ public class AppContent {
     Font label_font = new Font("SansSerif", Font.BOLD, 12);
     private JLabel jLabel = new JLabel(label_text);
 
-    // Jpanel second jpanel
-
     CoderButtonAction btnActions;
     ResetButtonAction resetButtonAction;
     KeyActions keyActions;
@@ -73,27 +71,27 @@ public class AppContent {
         button_reset.setVisible(false);
         textFormPanel.add(button_reset);
 
-        // Button Coder Actions
+        // Action du bouton Coder
         button_coder.addActionListener(
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    new CoderButtonAction(e, field, textFormPanel, buttonGeneratePanel, window, button_reset);
+                    new CoderButtonAction(e, field, buttonGeneratePanel, window, button_reset);
                 }
             }
         );
 
-        // Button reset Actions
+        // Action du bouton reset
         button_reset.addActionListener(
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        new ResetButtonAction(e, field, buttonGeneratePanel,window, button_coder);
+                        new ResetButtonAction(e, field, buttonGeneratePanel, button_coder);
                     }
                 }
         );
 
-        // field Key Actions
+        // Action sur le champs
         field.addKeyListener(
             new KeyAdapter() {
                 @Override
