@@ -4,20 +4,32 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Launcher extends JFrame  {
-    private JFrame jFrame = new JFrame(getClass().getName());
-    private JPanel jPanel = new JPanel();
+    private JFrame window = new JFrame(getClass().getName());
+    private JPanel containerPanel = new JPanel();
+    private JPanel TextFormPanel = new JPanel();
+    private JPanel buttonGeneratePanel = new JPanel();
 
     public Launcher() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new FlowLayout());
-        jFrame.setSize(500, 80);
-        jPanel.setBackground(Color.LIGHT_GRAY);
+        window.setSize(500, 111);
+        window.setBackground(Color.WHITE);
 
-        new AppContent(jFrame, jPanel);
+        containerPanel.setLayout(new FlowLayout());
+        containerPanel.setBackground(new Color( 85, 85, 85));
 
-        jFrame.getContentPane().add(jPanel);
-        jFrame.setVisible(true);
-        jFrame.setLocationRelativeTo(null);
+        TextFormPanel.setBackground(Color.WHITE);
+        TextFormPanel.setPreferredSize(new Dimension(500, 80));
+
+        buttonGeneratePanel.setBackground(Color.RED);
+        buttonGeneratePanel.setPreferredSize(new Dimension(500, 300));
+
+        new AppContent(window, TextFormPanel, buttonGeneratePanel);
+
+        containerPanel.add(TextFormPanel);
+        containerPanel.add(buttonGeneratePanel);
+        window.add(containerPanel);
+        window.setVisible(true);
+        window.setLocationRelativeTo(null);
     }
 
     public static void main(String[] args) {
