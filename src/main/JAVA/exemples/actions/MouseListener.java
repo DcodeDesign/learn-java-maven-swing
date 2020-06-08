@@ -22,7 +22,7 @@ public class MouseListener  extends JFrame implements java.awt.event.MouseListen
         button.setFocusPainted(false);
 
         button.addMouseListener(new java.awt.event.MouseAdapter() {
-
+            /*
             public void mouseClicked(MouseEvent e) {
                 button.setBackground(Color.GREEN);
                 button.setText("mouseClicked");
@@ -46,6 +46,7 @@ public class MouseListener  extends JFrame implements java.awt.event.MouseListen
                 button.setBackground(Color.orange);
                 button.setText("mouseExited");
             }
+            */
         });
 
         //button.addMouseListener(this);
